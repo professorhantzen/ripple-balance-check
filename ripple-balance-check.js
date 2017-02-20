@@ -4,26 +4,26 @@ var accounts = [
   'rGSRqpUQAschCY5rdoRAXnnCvoGpq5toZ1'
 ];
 
-const WebSocket = require('ws');
-const ws 		    = new WebSocket('wss://s1.ripple.com:51233');
-const l 		    = console.log;
+const WebSocket	= require('ws');
+const ws 	= new WebSocket('wss://s1.ripple.com:51233');
+const l		= console.log;
 
 const LINES 	= true;		// set to false for XRP balances only
-const WARN 		= true;		// set to false to suppress no_ripple flag warning
-const CSV 		= false;	// set to true for CSV-formatted output. redirect script output to create CSV file, eg "node ripple-balance-check.js > ripple_balances.csv")
-const DROPS 	= false;	// set to true to output XRP values in RCL-native "drop" format (1 XRP = 1000000 drops)
+const WARN	= true;		// set to false to suppress no_ripple flag warning
+const CSV 	= false;	// set to true for CSV-formatted output. redirect script output to create CSV file, eg "node ripple-balance-check.js > ripple_balances.csv")
+const DROPS	= false;	// set to true to output XRP values in RCL-native "drop" format (1 XRP = 1000000 drops)
 
-var account_info 	  = 0;
+var account_info 	= 0;
 var account_lines 	= 0;
-var xrp_balances 	  = [];
-var iou_balances 	  = [];
-var balances        = {};
+var xrp_balances 	= [];
+var iou_balances 	= [];
+var balances		= {};
 
 ws.on('open', function (){
 	if(!CSV) l('Requesting balances for ' + accounts.length + ' account(s)');
 	accounts.forEach(function(account) {
-	  ws.send('{\"id\":\"account_info\",\"command\":\"account_info\", \"account\":\"'+account+'\"}');
-	  if(LINES) ws.send('{\"id\":\"account_lines\",\"command\":\"account_lines\", \"account\":\"'+account+'\"}');
+		ws.send('{\"id\":\"account_info\",\"command\":\"account_info\", \"account\":\"'+account+'\"}');
+		if(LINES) ws.send('{\"id\":\"account_lines\",\"command\":\"account_lines\", \"account\":\"'+account+'\"}');
 	});
 });
 
