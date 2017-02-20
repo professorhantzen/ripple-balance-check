@@ -1,12 +1,12 @@
 var accounts = [
-  // replace or augment these with ripple addresses you want to check
+  // replace or augment these with ripple addresses to check the balances of
   'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh',
   'rGSRqpUQAschCY5rdoRAXnnCvoGpq5toZ1'
 ];
 
 const WebSocket	= require('ws');
 const ws 	= new WebSocket('wss://s1.ripple.com:51233');
-const l		= console.log;
+const l		= console.log;	// declare war on console.log
 
 const LINES 	= true;		// set to false for XRP balances only
 const WARN	= true;		// set to false to suppress no_ripple flag warning
