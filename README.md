@@ -1,5 +1,5 @@
 # ripple-balance-check
-Simple node.js script to view multiple account balances on Ripple.  Connects to public rippled servers over websocket.
+node.js script to view multiple Ripple account balances by connecting to Ripple's servers over websocket.
 
 Dependencies:  `npm install ws`  
 
